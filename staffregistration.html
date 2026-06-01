@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitZone Fitness Center - Staff Registration</title>
+    <link rel="stylesheet" href="staffregistration.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .error-messages {
+            color: #dc3545;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .error-messages ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .error-field {
+            border: 1px solid #dc3545 !important;
+        }
+        .form-text {
+            font-size: 0.8em;
+            color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>FitZone Fitness Center</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="Packages.html">Packages</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="register.html" class="btn">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="registration-container">
+        <div class="registration-header">
+            <h2>Staff Registration</h2>
+            <p>Register as a FitZone staff member</p>
+        </div>
+
+        <!-- Error Messages Display -->
+        <div id="error-messages" class="error-messages">
+            <h3>Please fix these errors:</h3>
+            <ul id="error-list"></ul>
+        </div>
+        
+        <form id="staff-registration-form" action="staffregistration.php" method="POST">
+            <!-- Personal Information -->
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Contact Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+            </div>
+            
+            
+            <!-- Login Credentials -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                    <small class="form-text">Minimum 8 characters with at least one number</small>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+            </div>
+            
+            <!-- Terms and Conditions -->
+            <div class="terms-agreement">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
+            </div>
+            
+            <button type="submit" class="submit-button">Register as Staff</button>
+            
+            <p class="admin-notice">Your registration will be reviewed by admin before approval</p>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 FitZone Fitness Center. All rights reserved.</p>
+        <div class="social-media">
+            <a href="https://facebook.com/fitzone" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/fitzone" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/fitzone" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Load saved form data from session when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Try to get form data from URL parameters (fallback)
+            const urlParams = new URLSearchParams(window.location.search);
+            const errors = urlParams.get('errors');
+            
+            if (errors) {
+                const errorDiv = document.getElementById('error-messages');
+                const errorList = document.getElementById('error-list');
+                
+                errorDiv.style.display = 'block';
+                errors.split('|').forEach(error => {
+                    const li = document.createElement('li');
+                    li.textContent = error;
+                    errorList.appendChild(li);
+                });
+                
+                errorDiv.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Client-side validation
+            document.getElementById('staff-registration-form').addEventListener('submit', function(e) {
+                // Clear previous errors
+                document.getElementById('error-list').innerHTML = '';
+                document.getElementById('error-messages').style.display = 'none';
+                
+                // Remove error highlights
+                const errorFields = document.querySelectorAll('.error-field');
+                errorFields.forEach(field => field.classList.remove('error-field'));
+                
+                // Validate form
+                const errors = [];
+                
+                // Check required fields
+                const requiredFields = [
+                    'fullname', 'email', 'phone', 'position', 
+                    'staff_id', 'joining_date', 'username', 
+                    'password', 'confirm_password'
+                ];
+                
+                requiredFields.forEach(field => {
+                    const element = document.getElementById(field);
+                    if (!element.value.trim()) {
+                        errors.push(`${field.replace('_', ' ')} is required`);
+                        element.classList.add('error-field');
+                    }
+                });
+                
+                // Validate email format
+                const email = document.getElementById('email').value;
+                if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    errors.push("Invalid email format");
+                    document.getElementById('email').classList.add('error-field');
+                }
+                
+                // Validate username length
+                const username = document.getElementById('username').value;
+                if (username && username.length < 4) {
+                    errors.push("Username must be at least 4 characters");
+                    document.getElementById('username').classList.add('error-field');
+                }
+                
+                // Validate password strength
+                const password = document.getElementById('password').value;
+                if (password) {
+                    if (password.length < 8) {
+                        errors.push("Password must be at least 8 characters");
+                        document.getElementById('password').classList.add('error-field');
+                    }
+                    if (!/\d/.test(password)) {
+                        errors.push("Password must contain at least one number");
+                        document.getElementById('password').classList.add('error-field');
+                    }
+                }
+                
+                // Validate password match
+                const confirmPassword = document.getElementById('confirm_password').value;
+                if (password && confirmPassword && password !== confirmPassword) {
+                    errors.push("Passwords do not match");
+                    document.getElementById('password').classList.add('error-field');
+                    document.getElementById('confirm_password').classList.add('error-field');
+                }
+                
+                // Validate terms checkbox
+                if (!document.getElementById('terms').checked) {
+                    errors.push("You must agree to the terms");
+                    document.getElementById('terms').classList.add('error-field');
+                }
+                
+                // If errors found, prevent submission
+                if (errors.length > 0) {
+                    e.preventDefault();
+                    const errorList = document.getElementById('error-list');
+                    errors.forEach(error => {
+                        const li = document.createElement('li');
+                        li.textContent = error;
+                        errorList.appendChild(li);
+                    });
+                    document.getElementById('error-messages').style.display = 'block';
+                    document.getElementById('error-messages').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

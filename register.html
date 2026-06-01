@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitZone Fitness Center</title>
+    <link rel="stylesheet" href="register.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <h1>FitZone Fitness Center</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="Packages.html">Packages</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="register.html" class="btn">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="register-container">
+        <div class="register-box">
+            <div class="register-header">
+                <h2>Join FitZone</h2>
+                <p>Create your account to get started</p>
+            </div>
+            
+            <!-- Error Messages Display -->
+            <div id="error-messages" style="display:none; color:red; margin-bottom:20px;"></div>
+            
+            <form action="register.php" method="POST" class="register-form">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                    <div class="password-hint">Minimum 8 characters with at least one number</div>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                </div>
+                <div class="form-group">
+                    <label for="membership">Membership Type</label>
+                    <select id="membership" name="membership" required>
+                        <option value="" disabled selected>Select membership</option>
+                        <option value="basic">Basic ($29/month)</option>
+                        <option value="standard">Standard ($49/month)</option>
+                        <option value="premium">Premium ($79/month)</option>
+                    </select>
+                </div>
+                <div class="form-options">
+                    <div class="terms-agreement">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
+                    </div>
+                </div>
+
+                <button type="submit" class="register-button">Create Account</button>
+                
+                <div class="login-link">
+                    <p>Already have an account? <a href="login.html">Login here</a></p>
+                </div>
+
+                </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 FitZone Fitness Center. All rights reserved.</p>
+        <div class="social-media">
+            <a href="https://facebook.com/fitzone" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/fitzone" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/fitzone" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Display errors from PHP if they exist
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const errors = urlParams.get('errors');
+            
+            if (errors) {
+                const errorDiv = document.getElementById('error-messages');
+                errorDiv.style.display = 'block';
+                errorDiv.innerHTML = `
+                    <h3>Please fix these errors:</h3>
+                    <ul>
+                        ${errors.split('|').map(error => `<li>${error}</li>`).join('')}
+                    </ul>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

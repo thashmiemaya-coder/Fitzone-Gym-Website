@@ -1,0 +1,89 @@
+/* General Styles */
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.navbar{
+    width:1200px;
+    height: 75px;
+    margin: auto;
+}
+
+.icon{
+    width: 200px;
+    float: left;
+    height: 70px;
+
+}
+
+.logo{
+    color: #333;
+    font-size: 25px;
+    font-family: Arial;
+    padding-left: 20px;
+    float: left;
+    padding-top: 10px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+    color: #333;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+    min-height: max-content;
+}
+
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.menu
+{
+    width: 600px;
+    float: right;
+    height:90px;
+
+}
+
+ul{
+    float: left;
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    margin: 10px;
+    padding: 10px;
+
+}
+
+ul li{
+    list-style: none;
+    margin-right: 27px;
+    
+}
+    
+    
+ul li a{
+   
+    margin-top: 6px;
+    display: inline;
+    font-size: 1rem;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+
+}

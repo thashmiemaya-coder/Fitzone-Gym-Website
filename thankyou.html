@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership - FitZone Fitness Center</title>
+    <link rel="stylesheet" href="thankyou.css">
+</head>
+<body>
+    <header>
+        <h1>FitZone Fitness Center</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="Packages.html">Packages</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="login.html" class = "btn">Register</a></li>
+            </ul>
+        </nav>
+
+       </header>
+
+    <main class="container">
+        <section class="thank-you">
+            <h2>Thank You for Joining FitZone!</h2>
+            <div id="planInfo"></div>
+            <p>We've received your registration for our <span id="membershipPlan"></span>.</p>
+            <p>Our team will contact you within 24 hours to complete your membership process.</p>
+            <a href="index.html" class="btn">Back to Home</a>
+        </section>
+    </main>
+
+   
+
+    <script>
+        // Display the selected plan
+        const urlParams = new URLSearchParams(window.location.search);
+        const plan = urlParams.get('plan');
+        if (plan) {
+            document.getElementById('membershipPlan').textContent = plan;
+        }
+    </script>
+
+   
+</body>
+</body>
+</html>

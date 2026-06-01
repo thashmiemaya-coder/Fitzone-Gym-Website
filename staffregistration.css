@@ -1,0 +1,254 @@
+/* General Styles */
+
+* {
+    padding: 0;
+    margin: 0;
+  
+}
+.navbar{
+    width:1200px;
+    height: 75px;
+    margin: auto;
+}
+
+.icon{
+    width: 200px;
+    float: left;
+    height: 70px;
+}
+
+.logo{
+    color: #333;
+    font-size: 25px;
+    font-family: Arial;
+    padding-left: 20px;
+    float: left;
+    padding-top: 10px;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu
+{
+    width: 600px;
+    float: right;
+    height:90px;
+}
+
+ul{
+    float: left;
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    margin: 10px;
+    padding: 10px;
+}
+
+ul li{
+    list-style: none;
+    margin-right: 27px;
+}
+
+ul li a{
+    margin-top: 6px;
+    display: inline;
+    font-size: 1rem;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/* Body with full-height background */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url('k.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+   
+
+}
+
+/* Overlay to make text more readable */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+
+/* Registration Container */
+.registration-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    padding: 50px;
+    margin: 20px auto; /* Keeps original margin but centers horizontally */
+}
+
+.registration-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+.registration-header h2 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.registration-header p {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+/* Form Styles */
+.registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* Terms Checkbox */
+.terms-agreement {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.terms-agreement input {
+    margin-right: 8px;
+}
+
+.terms-agreement a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.terms-agreement a:hover {
+    text-decoration: underline;
+}
+
+/* Submit Button */
+.submit-button {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background-color: #219653;
+}
+
+/* Admin Notice */
+.admin-notice {
+    font-size: 13px;
+    color: #7f8c8d;
+    text-align: center;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .registration-container {
+        padding: 20px;
+    }
+}
+
+
+
+.btn {
+    background-color: #FF5722;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #E64A19;
+}
+
+/*footer css*/
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
